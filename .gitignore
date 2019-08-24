@@ -62,3 +62,9 @@ typings/
 
 # .DS_Store
 .DS_Store
+
+# VS Code
+clockwise.code-workspace
+
+# KNEX
+knexfile.js
