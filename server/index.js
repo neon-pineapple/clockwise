@@ -11,15 +11,14 @@ const statuses = require('./routers/statuses');
 const punches = require('./routers/punches');
 const reports = require('./routers/reports');
 
-// Parse incoming JSON
+// Parse incoming JSON and URL query parameters
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 app.use('/users', users);
 app.use('/statuses', statuses);
 app.use('/punches', punches);
 app.use('/reports', reports);
-
-// app.use(express.urlencoded({extended: false}));
 
 
 // Start server
