@@ -4,17 +4,22 @@ const express = require('express');
 // Setup server
 const app = express();
 
-// Setup database
-const knex = require('knex')(require('./knexfile')[process.env.NODE_ENV]);
-
 // Setup routes
 // index, users, statuses, punches, reports
-const users = require('./routes/users');
-
-app.use('/users', users);
+const users = require('./routers/users');
+const statuses = require('./routers/statuses');
+const punches = require('./routers/punches');
+const reports = require('./routers/reports');
 
 // Parse incoming JSON
+app.use(express.json());
 
+app.use('/users', users);
+app.use('/statuses', statuses);
+app.use('/punches', punches);
+app.use('/reports', reports);
+
+// app.use(express.urlencoded({extended: false}));
 
 
 // Start server
