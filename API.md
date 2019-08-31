@@ -13,12 +13,27 @@ Describe how the authentication works here.
 ## Users
 
 ### Endpoints
-- [POST] /users
-- [GET] /users/:id
-- [GET] /users 
+- POST /users
+- GET /users/:id
+- GET /users 
 
 ### The User Object
 Show a JSON sample of a user object here
+```
+{
+    "userId": 1,
+    "name": "Joanie Appleseed",
+    ...
+    "punches": [
+        {
+            "punchId": 1,
+            "status": {
+                "statusId": 1
+                ...
+            }
+    ]
+}
+```
 
-### [POST] / users
-#### Create a new user
+
+### Create a new user - POST /user
