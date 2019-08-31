@@ -5,11 +5,16 @@ exports.validationRules = [];
 // TODO: Add validation rules
 
 exports.get = function(req,res) {
-    // Optionally accepts a userId via GET variable
-    // If passed, determine that user's current status and only return opposite statuses
+    // Optionally accepts a currentStatus via GET variable
+    // If passed, get only statuses that would be opposite of that - IN for OUT and vice versa
+    let currentStatus = typeof(req.query.currentStatus) !== 'undefined' ? req.query.currentStatus : false;
 
-    res.json(req.params);
+    if(currentStatus) {
+        statusesModel.getValid(1, false)
+            .then((response) => res.json(response));
+    } else {
+        statusesModel.get()
+            .then((response) => res.json(response));
+    }
 
-    // statusesModel.getValid(1, false)
-    //     .then((response) => res.json(response));
 }

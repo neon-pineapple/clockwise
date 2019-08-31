@@ -17,3 +17,17 @@ exports.post = (body) => {
     let queryPromise = knex(tableName).insert(punch)
     return queryPromise;
 };
+
+
+
+
+exports.getLatest = (userId, limit) => {
+    // Get the latest punches for the given userId, with an optional limit
+
+    // Validate the limit as a number and default to 5
+    limit = typeof(limit) !== 'undefined' && Number.isInteger(limit) ? limit : 5;
+
+    return knex.select(selectableProps).from(tableName)
+        .where('userId', userId)
+        .orderBy('createdAt', 'desc');
+}

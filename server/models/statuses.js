@@ -5,7 +5,11 @@ const knex = require('knex')(require('../knexfile')[process.env.NODE_ENV]);
 const tableName = 'statuses';
 const selectableProps = ['statusId', 'name', 'isIn'];
 
-exports.get = (statusId) => {
+exports.get = () => {
+    return knex.select(selectableProps).from(tableName);
+}
+
+exports.get_statusId = (statusId) => {
     let queryPromise = knex.select(selectableProps).from(tableName);
     if(typeof(statusId) !== 'undefined') queryPromise.where('statusId', statusId);
     return queryPromise;
