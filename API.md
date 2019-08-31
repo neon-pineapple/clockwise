@@ -22,6 +22,7 @@ Show a JSON sample of a user object here
 ```
 {
     "userId": 1,
+    "object": "user",
     "name": "Joanie Appleseed",
     ...
     "punches": [
@@ -37,3 +38,9 @@ Show a JSON sample of a user object here
 
 
 ### Create a new user - POST /user
+
+
+### Retrieve a user - GET /user/:id
+
+Arguments:
+- customer
